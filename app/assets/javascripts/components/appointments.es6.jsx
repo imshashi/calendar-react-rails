@@ -1,12 +1,15 @@
 class Appointments extends React.Component {
   render () {
     return (
-      <h1> Calendar - React Rails </h1>
+      <div>
+        <AppointmentForm />
+        <AppointmentsList appointments={ this.props.appointments } />
+      </div>
     );
   }
 }
 
 Appointments.propTypes = {
-  label: PropTypes.string
+  appointments: PropTypes.array.isRequired
 };
 
