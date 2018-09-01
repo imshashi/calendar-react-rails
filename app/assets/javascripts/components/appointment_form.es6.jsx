@@ -1,12 +1,12 @@
-class AppointmentForm extends React.Component {
-  handleChange(e) {
+var AppointmentForm = ReactcreateClass({
+  handleChange: function(e) {
     var name = e.target.name;
     obj = {};
     obj[name] = e.target.value;
     this.props.onUserInput(obj);
-  }
+  },
 
-  render() {
+  render: function() {
     return (
       <div>
         <h3> Make a new appointment </h3>
@@ -28,8 +28,5 @@ class AppointmentForm extends React.Component {
       </div>
     );
   }
-}
+});
 
-// AppointmentForm.propTypes = {
-//   onUserInput: PropTypes.func.isRequired
-// };

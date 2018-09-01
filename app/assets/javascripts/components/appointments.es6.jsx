@@ -1,18 +1,17 @@
-class Appointments extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+var Appointments = React.createClass ({
+  getInitialState: function() {
+    return {
       appointments: this.props.appointments,
       input_title: '',
       input_apt_time: ''
     }
-  }
+  },
 
-  handleUserInput(obj) {
+  handleUserInput: function(obj) {
     this.setState(obj);
-  }
+  },
 
-  render () {
+  render: function() {
     return (
       <div>
         <AppointmentForm
@@ -26,9 +25,4 @@ class Appointments extends React.Component {
       </div>
     );
   }
-}
-
-Appointments.propTypes = {
-  appointments: PropTypes.array.isRequired
-};
-
+});

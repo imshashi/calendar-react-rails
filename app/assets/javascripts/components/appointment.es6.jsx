@@ -1,5 +1,5 @@
-class Appointment extends React.Component {
-  render () {
+var Appointment = React.createClass({
+  render: function() {
     const { id, title, apt_time } = this.props.appointment;
     return (
       <div>
@@ -8,8 +8,5 @@ class Appointment extends React.Component {
       </div>
     );
   }
-}
+});
 
-Appointment.propTypes = {
-  appointment: PropTypes.object.isRequired
-};

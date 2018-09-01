@@ -1,5 +1,5 @@
-class AppointmentsList extends React.Component {
-  render () {
+var AppointmentsList = React.createClass({
+  render: function () {
     return (
       <div>
         { this.props.appointments.map(function(appointment) {
@@ -10,9 +10,5 @@ class AppointmentsList extends React.Component {
       </div>
     );
   }
-}
-
-Appointments.propTypes = {
-  appointments: PropTypes.array.isRequired
-};
+});
 
