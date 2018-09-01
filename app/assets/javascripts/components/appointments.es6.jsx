@@ -1,23 +1,25 @@
-var Appointments = React.createClass ({
-  getInitialState: function() {
-    return {
+class Appointments extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       appointments: this.props.appointments,
-      input_title: '',
-      input_apt_time: ''
+      title: '',
+      apt_time: ''
     }
-  },
+    this.handleUserInput = this.handleUserInput.bind(this);
+  }
 
-  handleUserInput: function(obj) {
+  handleUserInput(obj) {
     this.setState(obj);
-  },
+  }
 
-  render: function() {
+  render () {
     return (
       <div>
         <AppointmentForm
-          input_title={ this.state.input_title }
-          input_apt_time={ this.state.input_apt_time }
-          onUserInput={ this.state.handleUserInput }
+          title={ this.state.title }
+          apt_time={ this.state.apt_time }
+          onUserInput={ this.handleUserInput }
         />
         <AppointmentsList
           appointments={ this.state.appointments }
@@ -25,4 +27,9 @@ var Appointments = React.createClass ({
       </div>
     );
   }
-});
+}
+
+Appointments.propTypes = {
+  appointments: PropTypes.array.isRequired
+};
+

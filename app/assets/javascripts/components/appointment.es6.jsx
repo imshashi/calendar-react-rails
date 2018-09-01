@@ -1,5 +1,5 @@
-var Appointment = React.createClass({
-  render: function() {
+class Appointment extends React.Component {
+  render () {
     const { id, title, apt_time } = this.props.appointment;
     return (
       <div>
@@ -8,5 +8,8 @@ var Appointment = React.createClass({
       </div>
     );
   }
-});
+}
 
+Appointment.propTypes = {
+  appointment: PropTypes.object.isRequired
+};
