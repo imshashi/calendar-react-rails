@@ -7,10 +7,35 @@ class Appointments extends React.Component {
       apt_time: ''
     }
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.addNewAppointment = this.addNewAppointment.bind(this);
   }
 
   handleUserInput(obj) {
     this.setState(obj);
+  }
+
+  handleFormSubmit() {
+    var appointment = {
+      title: this.state.title,
+      apt_time: this.state.apt_time
+    }
+
+    $.post('/appointments',
+      { appointment: appointment }
+    )
+    .done(function(data) {
+      this.addNewAppointment(data);
+    }.bind(this));
+  }
+
+  addNewAppointment(appointment) {
+    console.log(appointment);
+    var appointments = React.addons.update(
+      this.state.appointments,
+      { $push: [appointment] }
+    );
+    this.setState({ appointments: appointments });
   }
 
   render () {
@@ -20,6 +45,7 @@ class Appointments extends React.Component {
           title={ this.state.title }
           apt_time={ this.state.apt_time }
           onUserInput={ this.handleUserInput }
+          onFormSubmit={ this.handleFormSubmit }
         />
         <AppointmentsList
           appointments={ this.state.appointments }

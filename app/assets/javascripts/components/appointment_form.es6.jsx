@@ -2,6 +2,7 @@ class AppointmentForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
@@ -11,11 +12,16 @@ class AppointmentForm extends React.Component {
     this.props.onUserInput(obj);
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.onFormSubmit();
+  }
+
   render() {
     return (
       <div>
         <h3> Make a new appointment </h3>
-        <form>
+        <form onSubmit={ this.handleSubmit }>
           <input
             name="title"
             placeholder="Appointment Title"
@@ -36,5 +42,6 @@ class AppointmentForm extends React.Component {
 }
 
 AppointmentForm.propTypes = {
-  onUserInput: PropTypes.func.isRequired
+  onUserInput: PropTypes.func.isRequired,
+  onFormSubmit: PropTypes.func.isRequired
 };
