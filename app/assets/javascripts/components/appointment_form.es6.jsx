@@ -3,6 +3,7 @@ class AppointmentForm extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setAptTime = this.setAptTime.bind(this);
   }
 
   handleChange(e) {
@@ -17,7 +18,18 @@ class AppointmentForm extends React.Component {
     this.props.onFormSubmit();
   }
 
+  setAptTime(e) {
+    var name = 'apt_time';
+    var obj = {};
+    if(obj[name] = e.toDate()) {
+      this.props.onUserInput(obj);
+    }
+  }
+
   render() {
+    var inputProps = {
+      name: 'apt_time'
+    }
     return (
       <div>
         <h3> Make a new appointment </h3>
@@ -28,11 +40,11 @@ class AppointmentForm extends React.Component {
             value={ this.props.title }
             onChange={ this.handleChange }
           />
-          <input
-            name="apt_time"
-            placeholder="Date and Time"
+          <Datetime
+            input={ false }
+            inputProps={ inputProps }
             value={ this.props.apt_time }
-            onChange={ this.handleChange }
+            onChange={ this.setAptTime }
           />
           <input type="submit" value="Make Appointment" />
         </form>

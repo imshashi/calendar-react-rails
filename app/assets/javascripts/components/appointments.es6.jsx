@@ -30,7 +30,6 @@ class Appointments extends React.Component {
   }
 
   addNewAppointment(appointment) {
-    console.log(appointment);
     var appointments = React.addons.update(
       this.state.appointments,
       { $push: [appointment] }
