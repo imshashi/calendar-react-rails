@@ -1,13 +1,10 @@
 class AppointmentForm extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.setAptTime = this.setAptTime.bind(this);
   }
 
   handleChange(e) {
-    var name = e.target.name;
+    const name = e.target.name;
     obj = {};
     obj[name] = e.target.value;
     this.props.onUserInput(obj);
@@ -19,32 +16,32 @@ class AppointmentForm extends React.Component {
   }
 
   setAptTime(e) {
-    var name = 'apt_time';
-    var obj = {};
+    const name = 'apt_time';
+    const obj = {};
     if(obj[name] = e.toDate()) {
       this.props.onUserInput(obj);
     }
   }
 
   render() {
-    var inputProps = {
+    const inputProps = {
       name: 'apt_time'
     }
     return (
       <div>
         <h3> Make a new appointment </h3>
-        <form onSubmit={ this.handleSubmit }>
+        <form onSubmit={ this.handleSubmit.bind(this) }>
           <input
             name="title"
             placeholder="Appointment Title"
             value={ this.props.title }
-            onChange={ this.handleChange }
+            onChange={ this.handleChange.bind(this) }
           />
           <Datetime
             input={ false }
             inputProps={ inputProps }
             value={ this.props.apt_time }
-            onChange={ this.setAptTime }
+            onChange={ this.setAptTime.bind(this) }
           />
           <input type="submit" value="Make Appointment" className='submit-button' />
         </form>
