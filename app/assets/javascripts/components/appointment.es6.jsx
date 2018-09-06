@@ -2,7 +2,7 @@ class Appointment extends React.Component {
   render () {
     const { id, title, apt_time } = this.props.appointment;
     return (
-      <div>
+      <div className='appointment'>
         <h3>{ title }</h3>
         <p>{ formatDate(apt_time) }</p>
       </div>
